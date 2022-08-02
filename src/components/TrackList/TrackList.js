@@ -1,9 +1,18 @@
 import React from "react";
 import "./TrackList.css";
-// import 'Track';
+import Track from "../Track/Track";
 
-export class TrackList extends React.Component {
+export default class TrackList extends React.Component {
 	render() {
-		return <div className="TrackList"></div>;
+		return (
+			<div className="TrackList">
+				{this.props.tracks.map((track) => (
+					<Track key={track.id} track={track} />
+				))}
+			</div>
+		);
 	}
 }
+
+// this.props.tracks.map((track) => {return <Track key={track.id} track={track} />;})
+// with braces arrows can have multi statements and with parentheses can have only one!
