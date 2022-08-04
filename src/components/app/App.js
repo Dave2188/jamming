@@ -8,6 +8,7 @@ import Playlist from "../Playlist/Playlist";
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.addTrack = this.addTrack.bind(this);
 		this.state = {
 			searchResults: [
 				{ name: "john", artist: "dave", album: "rocket", id: 851 },
@@ -18,21 +19,21 @@ export default class App extends React.Component {
 			playListName: "Dave's List",
 
 			playListTracks: [
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: "187" },
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: "188" },
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: "189" },
+				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 187 },
+				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 188 },
+				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 189 },
 			],
 		};
 	}
 
-	addTrack = this.addTrack.bind(this);
-
 	addTrack(track) {
-		track.id ===
-		this.state.playListTracks.map((playListTrack) => playListTrack.id)
-			? alert("This song is already on the playlist")
-			: this.setState(this.state.playListTracks.push(track));
+		console.log(track);
+		if (this.state.playListTracks.find((savedTrack) => savedTrack.id === track.id)) {
+			return;
+		}
 	}
+    //  add the rest of the code to push to playlist
+	removeTrack()
 
 	render() {
 		return (
