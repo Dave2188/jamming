@@ -22,7 +22,9 @@ export default class Playlist extends React.Component {
 					onRemove={this.props.onRemove}
 					tracks={this.props.playListTracks}
 				/>
-				<button className="Playlist-save">SAVE TO SPOTIFY</button>
+				<button onClick={this.props.onSave} className="Playlist-save">
+					SAVE TO SPOTIFY
+				</button>
 			</div>
 		);
 	}

@@ -14,6 +14,7 @@ export default class App extends React.Component {
 		this.removeTrack = this.removeTrack.bind(this);
 		this.updatePlayListName = this.updatePlayListName.bind(this);
 		this.savePlayList = this.savePlayList.bind(this);
+		this.search = this.search.bind(this);
 		this.state = {
 			searchResults: [
 				{ name: "john", artist: "dave", album: "rocket", id: 851 },
@@ -61,6 +62,10 @@ export default class App extends React.Component {
 		}
 	}
 
+	search(term) {
+		console.log(term);
+	}
+
 	removeTrack(track) {
 		if (
 			this.state.playListTracks.find((savedTrack) => savedTrack.id === track.id)
@@ -93,13 +98,14 @@ export default class App extends React.Component {
 					Ja<span className="highlight">mmm</span>ing
 				</h1>
 				<div className="App">
-					<SearchBar />
+					<SearchBar onSearch={this.search} />
 					<div className="App-playlist">
 						<SearchResults
 							onAdd={this.addTrack}
 							searchResults={this.state.searchResults}
 						/>
 						<Playlist
+							onSave={this.savePlayList}
 							onNameChange={this.updatePlayListName}
 							onRemove={this.removeTrack}
 							playListName={this.state.playListName}
