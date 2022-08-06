@@ -13,6 +13,7 @@ export default class App extends React.Component {
 		this.addTrack = this.addTrack.bind(this);
 		this.removeTrack = this.removeTrack.bind(this);
 		this.updatePlayListName = this.updatePlayListName.bind(this);
+		this.savePlayList = this.savePlayList.bind(this);
 		this.state = {
 			searchResults: [
 				{ name: "john", artist: "dave", album: "rocket", id: 851 },
@@ -23,9 +24,27 @@ export default class App extends React.Component {
 			playListName: "Dave's List",
 
 			playListTracks: [
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 187 },
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 188 },
-				{ name: "The mighty Thor", artist: "Thor", album: "Hammer", id: 189 },
+				{
+					name: "The mighty Thor",
+					artist: "Thor",
+					album: "Hammer",
+					id: 187,
+					uri: 1,
+				},
+				{
+					name: "The mighty Thor",
+					artist: "Thor",
+					album: "Hammer",
+					id: 188,
+					uri: 2,
+				},
+				{
+					name: "The mighty Thor",
+					artist: "Thor",
+					album: "Hammer",
+					id: 189,
+					uri: 3,
+				},
 			],
 		};
 	}
@@ -60,6 +79,13 @@ export default class App extends React.Component {
 		this.setState({ playListName: name });
 	}
 
+	savePlayList() {
+		let trackURIs = [];
+		this.state.playListTracks.forEach((track) => {
+			trackURIs.push(track.uri);
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -85,3 +111,5 @@ export default class App extends React.Component {
 		);
 	}
 }
+
+// https://open.spotify.com/artist/3rWZHrfrsPBxVy692yAIxF?si=895c62517c154db1
