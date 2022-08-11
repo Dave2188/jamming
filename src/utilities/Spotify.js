@@ -17,7 +17,25 @@ const Spotify = {
 				userToken = "";
 				url = url.split("#")[0];
 			}, expirationTime);
+			return;
 		}
+		if (userToken === undefined) {
+			window.location.replace(
+				`https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`
+			);
+		}
+	},
+
+	search(term) {
+		const params = {
+			headers: { Authorization: `Bearer ${userToken}` },
+			method: "GET",
+		};
+
+		fetch("https://api.spotify.com/v1/search?type=track&q=TERM", params)
+			.then((response) => response.json())
+			.then(JSON.parse(response.json));
+		response.map();
 	},
 };
 
