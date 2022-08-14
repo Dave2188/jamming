@@ -4,50 +4,27 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import TrackList from "../TrackList/TrackList";
-import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
+import Spotify from "../../utilities/Spotify";
+// import TrackList from "../TrackList/TrackList";
+// import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
 
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			searchResults: [],
+
+			playListName: "",
+
+			playListTracks: [],
+		};
+
 		this.addTrack = this.addTrack.bind(this);
 		this.removeTrack = this.removeTrack.bind(this);
 		this.updatePlayListName = this.updatePlayListName.bind(this);
 		this.savePlayList = this.savePlayList.bind(this);
 		this.search = this.search.bind(this);
-		this.state = {
-			searchResults: [
-				{ name: "john", artist: "dave", album: "rocket", id: 851 },
-				{ name: "john", artist: "dave", album: "rocket", id: 852 },
-				{ name: "john", artist: "dave", album: "rocket", id: 853 },
-			],
-
-			playListName: "Dave's List",
-
-			playListTracks: [
-				{
-					name: "The mighty Thor",
-					artist: "Thor",
-					album: "Hammer",
-					id: 187,
-					uri: 1,
-				},
-				{
-					name: "The mighty Thor",
-					artist: "Thor",
-					album: "Hammer",
-					id: 188,
-					uri: 2,
-				},
-				{
-					name: "The mighty Thor",
-					artist: "Thor",
-					album: "Hammer",
-					id: 189,
-					uri: 3,
-				},
-			],
-		};
 	}
 
 	addTrack(track) {
@@ -63,7 +40,9 @@ export default class App extends React.Component {
 	}
 
 	search(term) {
-		console.log(term);
+		Spotify.search(term).then((searchResults) => {
+			this.setState({ searchResults: searchResults });
+		});
 	}
 
 	removeTrack(track) {
@@ -89,13 +68,19 @@ export default class App extends React.Component {
 		this.state.playListTracks.forEach((track) => {
 			trackURIs.push(track.uri);
 		});
+		Spotify.savePlaylist(this.state.playListName, trackURIs).then(() => {
+			this.setState({
+				playListName: "New Playlist",
+				playListTracks: [],
+			});
+		});
 	}
 
 	render() {
 		return (
 			<div>
 				<h1>
-					Ja<span className="highlight">mmm</span>ing
+					Play<span className="highlight">LIST</span>ify
 				</h1>
 				<div className="App">
 					<SearchBar onSearch={this.search} />
