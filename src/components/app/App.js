@@ -83,7 +83,10 @@ export default class App extends React.Component {
 					Play<span className="highlight">LIST</span>ify
 				</h1>
 				<div className="App">
-					<SearchBar onSearch={this.search} />
+					<SearchBar
+						onFirstClick={Spotify.getAccessToken}
+						onSearch={this.search}
+					/>
 					<div className="App-playlist">
 						<SearchResults
 							onAdd={this.addTrack}

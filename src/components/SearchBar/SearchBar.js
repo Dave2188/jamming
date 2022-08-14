@@ -7,6 +7,7 @@ export default class SearchBar extends React.Component {
 		this.search = this.search.bind(this);
 		this.handleTermChange = this.handleTermChange.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	handleTermChange(e) {
 		document.getElementsByTagName("input").innerHTML = e.target.value;
@@ -18,6 +19,10 @@ export default class SearchBar extends React.Component {
 		}
 	}
 
+	handleClick(event) {
+		this.props.onFirstClick();
+	}
+
 	search() {
 		let term = document.getElementsByTagName("input").innerHTML;
 		this.props.onSearch(term);
@@ -27,6 +32,7 @@ export default class SearchBar extends React.Component {
 		return (
 			<div className="SearchBar">
 				<input
+					onClick={this.handleClick}
 					tabIndex={0}
 					onKeyDown={this.handleKeyDown}
 					onChange={this.handleTermChange}
