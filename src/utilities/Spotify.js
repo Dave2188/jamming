@@ -47,6 +47,7 @@ const Spotify = {
 					name: track.name,
 					artist: track.artists[0].name,
 					album: track.album.name,
+					albumImage: track.album.images[2],
 					uri: track.uri,
 				}));
 			});
@@ -64,7 +65,6 @@ const Spotify = {
 		return fetch(`https://api.spotify.com/v1/me`, { headers: headers })
 			.then((response) => response.json())
 			.then((jsonResponse) => {
-				console.log(jsonResponse);
 				userId = jsonResponse.id;
 				return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
 					headers: headers,

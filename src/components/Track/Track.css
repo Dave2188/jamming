@@ -1,5 +1,6 @@
 .Track {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	border-bottom: 1px solid rgba(256, 256, 256, 0.8);
 }
@@ -34,4 +35,10 @@
 	font-size: 0.83rem;
 	font-weight: 300;
 	color: rgba(256, 256, 256, 0.8);
+}
+
+.art {
+	height: 50px;
+	width: 50px;
+	margin-right: 8px;
 }
