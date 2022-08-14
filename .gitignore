@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Spotify authentication and api
+src/utilities/Spotify.js
