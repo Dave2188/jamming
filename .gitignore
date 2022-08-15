@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+src/utilities
 
 # testing
 /coverage
@@ -22,5 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#Spotify authentication and api
-/src/utilities/Spotify.js
+# Spotify authentication and api
+.Spotify/
