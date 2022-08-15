@@ -1,7 +1,7 @@
 let userToken;
 let expirationTime;
 const clientId = "c7a5e1594c8b40a49a137d4cf40571d1";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://Play-list-ify.surge.sh";
 
 const Spotify = {
 	getAccessToken() {
