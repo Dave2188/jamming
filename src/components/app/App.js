@@ -1,12 +1,9 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import Spotify from "../../utilities/Spotify";
-// import TrackList from "../TrackList/TrackList";
-// import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
 
 export default class App extends React.Component {
 	constructor(props) {
