@@ -101,5 +101,3 @@ export default class App extends React.Component {
 		);
 	}
 }
-
-// https://open.spotify.com/artist/3rWZHrfrsPBxVy692yAIxF?si=895c62517c154db1
