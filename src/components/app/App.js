@@ -25,7 +25,6 @@ export default class App extends React.Component {
 	}
 
 	addTrack(track) {
-		// console.log(track);
 		if (
 			this.state.playListTracks.find((savedTrack) => savedTrack.id === track.id)
 		) {
