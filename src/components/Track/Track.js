@@ -1,5 +1,5 @@
 import React from "react";
-import "./Track.css";
+import "./track.css";
 
 export default class Track extends React.Component {
 	constructor(props) {
