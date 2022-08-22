@@ -24,4 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 
 # Spotify authentication and api
-.Spotify/
